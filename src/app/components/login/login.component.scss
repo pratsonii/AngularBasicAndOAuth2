@@ -1,0 +1,39 @@
+.container {
+  width: 100%;
+  margin-top: 5%;
+  font-size: 10px;
+}
+
+.login-form {
+  max-width: 300px;
+}
+
+.login-form-forgot {
+  float: right;
+}
+
+.login-form-button {
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.center {
+  width: 30%;
+  margin: 30px auto;
+  box-shadow: 1px 1px 2px 1px rgb(128, 128, 128);
+}
+
+.form-center {
+  margin: 20px auto;
+}
+
+.login-success {
+  width: 100%;
+  height: 100%;
+  margin: 30px auto;
+  text-align: center;
+
+  h1 {
+    margin-bottom: 0;
+  }
+}

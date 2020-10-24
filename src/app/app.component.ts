@@ -1,3 +1,5 @@
+import { AppService } from './app.service';
+import { OnDestroy, OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +9,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'OAuth2AndBasic';
+
+  constructor () {
+  }
 }
