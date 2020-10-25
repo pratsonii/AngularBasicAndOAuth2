@@ -6,6 +6,10 @@ This uses :
 - Ant Design - Styling framework
 - NGXS - Redux
 
+## Prerequisite
+-   NPM
+-   Angular CLI
+
 ## Steps
 
 -   Start backend server (mentioned above in description) on port 8080
