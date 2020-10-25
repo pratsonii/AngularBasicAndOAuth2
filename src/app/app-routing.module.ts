@@ -1,3 +1,4 @@
+import { AuthGuardService } from './services/auth-guard-service.service';
 import { TokenComponent } from './components/token/token.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegistrationComponent } from './components/registration/registration.component';
@@ -8,7 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "register", component: RegistrationComponent },
-  { path: "home", component: HomeComponent },
+  { path: "home", component: HomeComponent, canActivate:[AuthGuardService] },
   { path: "token/:value", component: TokenComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' }, // redirect to `first-component`
   { path: '**', component: LoginComponent },  // Wildcard route for a 404 page

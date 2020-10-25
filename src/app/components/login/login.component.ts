@@ -18,31 +18,37 @@ import { trigger, style, transition, animate } from "@angular/animations";
   ]
 })
 export class LoginComponent implements OnInit {
-  validateForm: FormGroup;
+  loginForm: FormGroup;
   loggedIn: boolean = false;
   userName: string;
 
-  submitForm(): void {
-    for (const i in this.validateForm.controls) {
-      this.validateForm.controls[i].markAsDirty();
-      this.validateForm.controls[i].updateValueAndValidity();
-    }
+  constructor (private fb: FormBuilder, private router: Router, private loginService: LoginService) { }
 
-    let password: string = this.validateForm.get("password").value;
-    let email: string = this.validateForm.get("userName").value;
+  submitForm(): void {
+    this.validateForm();
+
+    //checks if all fields are valid or not
+    if (this.loginForm.invalid) return;
+
+    this.doLogin();
+  }
+
+  private doLogin() {
+    let password: string = this.loginForm.get("password").value;
+    let email: string = this.loginForm.get("userName").value;
 
     this.loginService.doLogin(email, password);
   }
 
-  constructor(
-    private fb: FormBuilder,
-    private router: Router,
-    private loginService:LoginService
-  ) {
+  private validateForm() {
+    for (const i in this.loginForm.controls) {
+      this.loginForm.controls[i].markAsDirty();
+      this.loginForm.controls[i].updateValueAndValidity();
+    }
   }
 
   ngOnInit(): void {
-    this.validateForm = this.fb.group({
+    this.loginForm = this.fb.group({
       userName: [null, [Validators.required]],
       password: [null, [Validators.required]],
       remember: [true]
@@ -53,7 +59,7 @@ export class LoginComponent implements OnInit {
     this.router.navigate(["/register"], { skipLocationChange: true });
   }
 
-  oAuthLogin(){
-    window.location.href='http://localhost:8080/oauth/autherization/' + 'google' + '?redirect_uri="http://localhost:4200/"';
+  oAuthLogin(authProvider: string) {
+    window.location.href = 'http://localhost:8080/oauth/autherization/' + authProvider + '?redirect_uri="http://localhost:4200/"';
   }
 }

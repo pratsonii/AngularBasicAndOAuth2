@@ -1,5 +1,8 @@
+import { Router } from '@angular/router';
+import { RemoveToken } from './../../store/token/token.actions';
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
+import { Store } from '@ngxs/store';
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
@@ -12,7 +15,7 @@ export class HomeComponent implements OnInit {
   lastName: string;
   email: string;
 
-  constructor (private http: HttpClient) { }
+  constructor (private http: HttpClient, private store: Store, private router: Router) { }
 
   ngOnInit() {
     this.getUserInfo().subscribe((data: any) => {
@@ -24,5 +27,11 @@ export class HomeComponent implements OnInit {
 
   getUserInfo() {
     return this.http.get(this.ipUrl);
+  }
+
+  logout() {
+    this.store.dispatch(new RemoveToken).subscribe(data => {
+      this.router.navigate(['login']);
+    });
   }
 }

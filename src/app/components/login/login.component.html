@@ -1,33 +1,37 @@
 <div class="container">
-  <nz-card class="center">
-    <form nz-form [formGroup]="validateForm" class="login-form form-center" (ngSubmit)="submitForm()">
-      <nz-form-item>
-        <nz-form-control nzErrorTip="Please input your username!">
-          <nz-input-group>
-            <input type="text" nz-input formControlName="userName" placeholder="Username" />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-control nzErrorTip="Please input your Password!">
-          <nz-input-group class="login-form-forgot">
-            <input type="password" nz-input formControlName="password" placeholder="Password" />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-control>
-          <label nz-checkbox formControlName="remember">
-            <span>Remember me</span>
-          </label>
-          <a class="login-form-forgot" class="login-form-forgot">Forgot password</a>
-          <button nz-button class="login-form-button" nzType="primary">Log in</button>
-          Or
-          <a (click)="register()">register now!</a>
-        </nz-form-control>
-      </nz-form-item>
-    </form>
-    <nz-divider nzText="OAuth"></nz-divider>
-    <button class="login-form form-center" nz-button nzType="primary" nzBlock (click)="oAuthLogin()">Google</button>
+  <nz-card class="center" style="background-color: #e5f9e0">
+    <div class="login-form form-center">
+      <form nz-form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input your username!">
+            <nz-input-group>
+              <label for="userName">Username</label>
+              <input type="text" nz-input formControlName="userName" placeholder="Username" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input your Password!">
+            <nz-input-group class="login-form-forgot">
+              <label for="password">Password</label>
+              <input type="password" nz-input formControlName="password" placeholder="Password" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <label nz-checkbox formControlName="remember">
+              <span>Remember me</span>
+            </label>
+            <a class="login-form-forgot" class="login-form-forgot">Forgot password</a>
+            <button nz-button class="login-form-button" nzType="primary">Log in</button>
+            Or
+            <a (click)="register()">register now!</a>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+      <nz-divider nzText="OAuth"></nz-divider>
+      <button nz-button nzType="primary" nzBlock (click)="oAuthLogin('google')">Google</button>
+    </div>
   </nz-card>
 </div>

@@ -1,3 +1,4 @@
+import { RegistrationService } from './registration.service';
 import { User } from 'src/app/interface/user';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Validators } from "@angular/forms";
@@ -44,12 +45,7 @@ export class RegistrationComponent implements OnInit {
       this.errorMessage = null;
       this.validateForm.reset();
     } else {
-      this.message.success("Registration successfull !", {
-        nzDuration: 3000,
-      });
-      setTimeout(() => {
-        this.route.navigate(["/login"],);
-      }, 4000);
+      this.registrationService.doRegistration(user);
     }
   }
 
@@ -69,11 +65,7 @@ export class RegistrationComponent implements OnInit {
     return {};
   };
 
-  constructor (
-    private fb: FormBuilder,
-    private route: Router,
-    private message: NzMessageService
-  ) { }
+  constructor (private fb: FormBuilder, private message: NzMessageService, private registrationService: RegistrationService) { }
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
