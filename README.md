@@ -1,4 +1,4 @@
-# OAuth2AndBasic
+# OAuth2 And Basic Logins
 
 This Angular 10 project is the front-end part for the [Spring Security Basic And OAuth2 Backend](https://github.com/pratsonii/SpringSecurityBasicAndOAuth2)
 
